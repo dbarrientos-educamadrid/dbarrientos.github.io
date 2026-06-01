@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resumen de Webs interesantes.</title>
+  <style>
+    body {
+      background-color: azure;
+      font-family: Arial, sans-serif;
+    }
+
+    .card {
+      /* Contenedor exterior con bordes redondeados */
+      width: 85%;
+      padding: 20px;
+      margin: 5%;
+      border-radius: 15px;
+      /* 🔴 bordes redondeados */
+      border: 1px solid #ccc;
+      background-color: #ffffff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      /* 🔹 Para colocar frame y texto en fila */
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      /* 🔹 centra verticalmente texto y frame */
+      gap: 100px;
+      /* separación entre frame y texto */
+    }
+
+    .card div {
+      border-radius: 15px;
+      /* 🔴 bordes redondeados */
+    }
+
+    .Titulo {
+      width: 100%;
+      height: auto;
+      /*background-color: blueviolet;*/
+      align-items: center;
+      text-align: center;
+      color: red;
+      font-size: 12px;    /* ← AQUÍ EL TAMAÑO QUE QUIERAS */
+      font-weight: bold;  /* ← NEGRITA */
+    }
+
+    .frame-wrapper {
+      width: 640px;
+      height: 360px;
+      overflow: hidden;
+      /* recorta lo que sobresale */
+      border: 1px solid #000;
+      /*position: relative;*/
+    }
+
+    /*Tamaño del espacio donde se representa la web:*/
+    .frame-wrapper iframe {
+      width: 1280px;  /* el doble del wrapper */
+      height: 720px;  /* el doble del wrapper */
+      border: 0;
+      transform: scale(0.5);      /* lo reducimos al 50% */
+      transform-origin: 0 0;      /* esquina superior izquierda */
+    }
+
+    /* Estilo del texto/enlace a la derecha del frame */
+    .frame-title {
+      display: flex;
+      align-items: center;  /* 🔹 centrado vertical */
+      flex: 1;              /* ocupa el espacio restante */
+      font-size: 16px;
+    }
+
+    .frame-title a {
+      text-decoration: none;
+      color: #0077cc;
+      font-weight: bold;
+    }
+
+    .frame-title a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="Titulo">
+      
+      <!-- Titulo en ASCII -->  
+      <pre>
+                                                                                                                                                          
+@@@@@@@   @@@@@@@@   @@@@@@   @@@  @@@  @@@@@@@@@@   @@@@@@@@  @@@  @@@     @@@@@@@   @@@@@@@@     @@@  @@@  @@@  @@@@@@@@  @@@@@@@    @@@@@@   
+@@@@@@@@  @@@@@@@@  @@@@@@@   @@@  @@@  @@@@@@@@@@@  @@@@@@@@  @@@@ @@@     @@@@@@@@  @@@@@@@@     @@@  @@@  @@@  @@@@@@@@  @@@@@@@@  @@@@@@@   
+@@!  @@@  @@!       !@@       @@!  @@@  @@! @@! @@!  @@!       @@!@!@@@     @@!  @@@  @@!          @@!  @@!  @@!  @@!       @@!  @@@  !@@       
+!@!  @!@  !@!       !@!       !@!  @!@  !@! !@! !@!  !@!       !@!!@!@!     !@!  @!@  !@!          !@!  !@!  !@!  !@!       !@   @!@  !@!       
+@!@!!@!   @!!!:!    !!@@!!    @!@  !@!  @!! !!@ @!@  @!!!:!    @!@ !!@!     @!@  !@!  @!!!:!       @!!  !!@  @!@  @!!!:!    @!@!@!@   !!@@!!    
+!!@!@!    !!!!!:     !!@!!!   !@!  !!!  !@!   ! !@!  !!!!!:    !@!  !!!     !@!  !!!  !!!!!:       !@!  !!!  !@!  !!!!!:    !!!@!!!!   !!@!!!   
+!!: :!!   !!:            !:!  !!:  !!!  !!:     !!:  !!:       !!:  !!!     !!:  !!!  !!:          !!:  !!:  !!:  !!:       !!:  !!!       !:!  
+:!:  !:!  :!:           !:!   :!:  !:!  :!:     :!:  :!:       :!:  !:!     :!:  !:!  :!:          :!:  :!:  :!:  :!:       :!:  !:!      !:!   
+::   :::   :: ::::  :::: ::   ::::: ::  :::     ::    :: ::::   ::   ::      :::: ::   :: ::::      :::: :: :::    :: ::::   :: ::::  :::: ::   
+ :   : :  : :: ::   :: : :     : :  :    :      :    : :: ::   ::    :      :: :  :   : :: ::        :: :  : :    : :: ::   :: : ::   :: : :    
+                                                                                                                                               
+      </pre>
+
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Contenedor donde se insertarán las tarjetas generadas por JS -->
+  <div id="cards-container"></div>
+
+  <script>
+    // 1. Array con los datos de las webs
+    const webs = [
+      {
+        id: "web01",
+        url: "https://www.tutorialesprogramacionya.com/",
+        tituloIframe: "Tutoriales Programación Ya",
+        textoEnlace: "Tutoriales Programación Ya."
+      },
+      {
+        id: "web02",
+        url: "https://aulavirtual32.educa.madrid.org/ismie/mod/url/view.php?id=288880",
+        tituloIframe: "Biblioteca Virtual de FP de la CAM",
+        textoEnlace: "Biblioteca Virtual de FP de la CAM."
+      },
+      {
+        id: "web03",
+        url: "https://manytools.org/hacker-tools/ascii-banner/",
+        tituloIframe: "Create ASCII text banners online",
+        textoEnlace: "Create ASCII text banners online. (manyTools.org)"
+      },
+      {
+        id: "web04",
+        url: "https://www.picuino.com",
+        tituloIframe: "Web de recursos de tecnología.",
+        textoEnlace: "Web de recursos y apuntes de tecnología. (Picuino)"
+      }
+
+      // Aquí puedes seguir añadiendo más objetos
+      // {
+      //   id: "web04",
+      //   url: "https://...",
+      //   tituloIframe: "Título para el iframe",
+      //   textoEnlace: "Texto que verá el usuario."
+      // }
+    ];
+
+    // 2. Referencia al contenedor donde irán todas las tarjetas
+    const container = document.getElementById('cards-container');
+
+    // 3. Recorremos el array y creamos cada tarjeta
+    webs.forEach(web => {
+      // Crear div.card
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.setAttribute('name', web.id);
+
+      // ---- Frame wrapper ----
+      const frameWrapper = document.createElement('div');
+      frameWrapper.className = 'frame-wrapper';
+
+      const iframe = document.createElement('iframe');
+      iframe.src = web.url;                 // URL del array
+      iframe.title = web.tituloIframe;      // título del array
+
+      frameWrapper.appendChild(iframe);
+
+      // ---- Título / enlace ----
+      const frameTitle = document.createElement('div');
+      frameTitle.className = 'frame-title';
+
+      const enlace = document.createElement('a');
+      enlace.href = web.url;                // misma URL
+      enlace.target = '_blank';
+      enlace.textContent = web.textoEnlace; // texto del array
+
+      frameTitle.appendChild(enlace);
+
+      // ---- Insertar todo en la tarjeta ----
+      card.appendChild(frameWrapper);
+      card.appendChild(frameTitle);
+
+      // ---- Añadir la tarjeta al contenedor principal ----
+      container.appendChild(card);
+    });
+  </script>
+</body>
+</html>
